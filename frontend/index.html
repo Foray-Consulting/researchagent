@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Research</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Markdown renderer -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/highlight.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Deep Research</h1>
+            <p class="subtitle">Comprehensive, multi-stage AI research on any topic</p>
+        </header>
+
+        <main>
+            <section id="research-form" class="card">
+                <h2>Start New Research</h2>
+                <form id="topic-form">
+                    <div class="form-group">
+                        <label for="topic">Research Topic</label>
+                        <input type="text" id="topic" name="topic" placeholder="Enter a research topic..." required>
+                    </div>
+                    <button type="submit" id="submit-btn" class="btn btn-primary">Begin Research</button>
+                </form>
+            </section>
+
+            <section id="research-progress" class="card hidden">
+                <h2>Research in Progress</h2>
+                <div class="progress-info">
+                    <p>Topic: <span id="progress-topic"></span></p>
+                    <p>Current Stage: <span id="current-stage"></span></p>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-stages">
+                        <div class="stage" data-stage="initial-research">
+                            <div class="stage-dot"></div>
+                            <span class="stage-label">Initial Research</span>
+                        </div>
+                        <div class="stage" data-stage="expanded-research">
+                            <div class="stage-dot"></div>
+                            <span class="stage-label">Expanded Research</span>
+                        </div>
+                        <div class="stage" data-stage="critical-analysis">
+                            <div class="stage-dot"></div>
+                            <span class="stage-label">Critical Analysis</span>
+                        </div>
+                        <div class="stage" data-stage="supplementary-research">
+                            <div class="stage-dot"></div>
+                            <span class="stage-label">Supplementary Research</span>
+                        </div>
+                        <div class="stage" data-stage="final-report">
+                            <div class="stage-dot"></div>
+                            <span class="stage-label">Final Report</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-status">
+                    <p id="progress-percentage">0%</p>
+                    <div class="fetch-indicator">
+                        <div class="fetch-animation">
+                            <div class="fetch-dot"></div>
+                            <div class="fetch-dot"></div>
+                            <div class="fetch-dot"></div>
+                        </div>
+                        <span>Fetching data...</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="research-result" class="card hidden">
+                <div class="result-header">
+                    <h2>Research Report: <span id="result-topic"></span></h2>
+                    <div class="result-actions">
+                        <button id="new-research-btn" class="btn">New Research</button>
+                    </div>
+                </div>
+                <div class="result-content">
+                    <div id="markdown-content"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Deep Research uses <a href="https://github.com/goose-ai/goose" target="_blank">Goose</a> with the fetch extension for AI-powered research.</p>
+        </footer>
+    </div>
+
+    <script src="js/renderer.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

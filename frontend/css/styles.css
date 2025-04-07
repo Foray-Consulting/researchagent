@@ -1,0 +1,447 @@
+/* Base Styles */
+:root {
+  --primary-color: #4a6cf7;
+  --primary-dark: #3a5be0;
+  --secondary-color: #6c757d;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --success-color: #28a745;
+  --info-color: #17a2b8;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --border-color: #e9ecef;
+  --border-radius: 0.5rem;
+  --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --transition: all 0.2s ease-in-out;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: var(--dark-color);
+  background-color: #f0f2f5;
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1.2rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.subtitle {
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* Card Component */
+.card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(74, 108, 247, 0.25);
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  border: none;
+  background-color: #f8f9fa;
+  color: var(--dark-color);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: #e2e6ea;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Header and Footer */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none !important;
+}
+
+/* Research Progress Styles */
+.progress-info {
+  margin-bottom: 1.5rem;
+}
+
+.progress-info p {
+  margin-bottom: 0.5rem;
+}
+
+.progress-container {
+  margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+  height: 0.75rem;
+  background-color: #e9ecef;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--primary-color);
+  width: 0;
+  transition: width 0.5s ease;
+}
+
+.progress-stages {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.progress-stages::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #e9ecef;
+  z-index: 0;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  position: relative;
+  z-index: 1;
+}
+
+.stage-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #e9ecef;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.stage.active .stage-dot {
+  background-color: var(--primary-color);
+}
+
+.stage.completed .stage-dot {
+  background-color: var(--success-color);
+}
+
+.stage-label {
+  font-size: 0.75rem;
+  color: var(--secondary-color);
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.stage.active .stage-label {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.stage.completed .stage-label {
+  color: var(--success-color);
+}
+
+.progress-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-status p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.fetch-indicator {
+  display: flex;
+  align-items: center;
+  color: var(--secondary-color);
+  font-size: 0.875rem;
+}
+
+.fetch-animation {
+  display: flex;
+  margin-right: 0.5rem;
+}
+
+.fetch-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  margin-right: 4px;
+  animation: fetch-pulse 1.5s infinite ease-in-out;
+}
+
+.fetch-dot:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.fetch-dot:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes fetch-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Research Results Styles */
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.result-header h2 {
+  margin: 0;
+}
+
+.result-content {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+/* Markdown Styling */
+#markdown-content {
+  line-height: 1.8;
+}
+
+#markdown-content h1,
+#markdown-content h2,
+#markdown-content h3,
+#markdown-content h4,
+#markdown-content h5,
+#markdown-content h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+#markdown-content h1 {
+  font-size: 2.25rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+#markdown-content h2 {
+  font-size: 1.8rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.3rem;
+}
+
+#markdown-content h3 {
+  font-size: 1.5rem;
+}
+
+#markdown-content h4 {
+  font-size: 1.25rem;
+}
+
+#markdown-content p {
+  margin-bottom: 1.5em;
+}
+
+#markdown-content ul,
+#markdown-content ol {
+  margin-bottom: 1.5em;
+  padding-left: 2em;
+}
+
+#markdown-content blockquote {
+  border-left: 4px solid var(--border-color);
+  padding-left: 1em;
+  margin-left: 0;
+  margin-bottom: 1.5em;
+  color: var(--secondary-color);
+}
+
+#markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+}
+
+#markdown-content table th,
+#markdown-content table td {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+}
+
+#markdown-content table th {
+  background-color: #f8f9fa;
+}
+
+#markdown-content pre {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+  margin-bottom: 1.5em;
+}
+
+#markdown-content code {
+  background-color: #f8f9fa;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+#markdown-content pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+#markdown-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5em auto;
+}
+
+#markdown-content hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 2em 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem 0;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .stage-label {
+    font-size: 0.65rem;
+  }
+  
+  .result-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .result-actions {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .progress-stages {
+    display: none;
+  }
+}
