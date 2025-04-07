@@ -2,6 +2,8 @@
 
 A web application that automates multi-stage research using the Goose CLI tool. This app mimics OpenAI's "Deep Research" feature, allowing users to input a research topic and receive a comprehensive, beautifully formatted report.
 
+![Deep Research Demo](media/dr.gif)
+
 ## Features
 
 - **Simple Interface**: Input a research topic and get a detailed report
