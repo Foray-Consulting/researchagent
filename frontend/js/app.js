@@ -22,6 +22,7 @@ let RESEARCH_STATUS = {
 // State
 let currentResearch = null;
 let statusCheckInterval = null;
+let rawMarkdownContent = null; // Store raw markdown for copying
 
 // DOM Elements
 const elements = {
@@ -38,7 +39,8 @@ const elements = {
   stages: document.querySelectorAll('.stage'),
   resultTopic: document.getElementById('result-topic'),
   markdownContent: document.getElementById('markdown-content'),
-  newResearchBtn: document.getElementById('new-research-btn')
+  newResearchBtn: document.getElementById('new-research-btn'),
+  copyMarkdownBtn: document.getElementById('copy-markdown-btn')
 };
 
 /**
@@ -48,6 +50,7 @@ function init() {
   // Add event listeners
   elements.topicForm.addEventListener('submit', handleSubmit);
   elements.newResearchBtn.addEventListener('click', resetForm);
+  elements.copyMarkdownBtn.addEventListener('click', copyMarkdownToClipboard);
   
   // Check for existing research in progress (in case of page refresh)
   const savedResearch = localStorage.getItem('currentResearch');
@@ -61,6 +64,39 @@ function init() {
       localStorage.removeItem('currentResearch');
     }
   }
+}
+
+/**
+ * Copy markdown content to clipboard
+ */
+function copyMarkdownToClipboard() {
+  if (!rawMarkdownContent) {
+    elements.copyMarkdownBtn.textContent = 'Nothing to copy';
+    setTimeout(() => {
+      elements.copyMarkdownBtn.textContent = 'Copy Markdown';
+    }, 2000);
+    return;
+  }
+  
+  navigator.clipboard.writeText(rawMarkdownContent)
+    .then(() => {
+      // Success visual feedback
+      elements.copyMarkdownBtn.textContent = 'Copied!';
+      elements.copyMarkdownBtn.classList.add('success');
+      
+      setTimeout(() => {
+        elements.copyMarkdownBtn.textContent = 'Copy Markdown';
+        elements.copyMarkdownBtn.classList.remove('success');
+      }, 2000);
+    })
+    .catch(err => {
+      console.error('Failed to copy: ', err);
+      elements.copyMarkdownBtn.textContent = 'Failed to copy';
+      
+      setTimeout(() => {
+        elements.copyMarkdownBtn.textContent = 'Copy Markdown';
+      }, 2000);
+    });
 }
 
 /**
@@ -184,6 +220,9 @@ async function fetchResearchStatus(id) {
 async function fetchAndShowResults(id) {
   try {
     const result = await fetchResearchResult(id);
+    
+    // Store the raw markdown for copying
+    rawMarkdownContent = result.result;
     
     // Set result topic
     elements.resultTopic.textContent = result.topic;
