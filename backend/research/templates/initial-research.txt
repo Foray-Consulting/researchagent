@@ -1,1 +1,2 @@
 Use your fetch tools to research the topic "{{TOPIC}}". Before you're done, identify the top 5 additional subtopics, subdomains, or related items to research further in order to better understand this topic.
+Use a long form paragraphic style with lists or summaries to provide context and references as necessary.
